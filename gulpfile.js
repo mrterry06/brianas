@@ -75,7 +75,7 @@ gulp.task('js', function(done){
   var conf = require(config.webpack.prod);
   webpack(conf).run(function(error, stats){
     if (error) throw new gutil.PluginError('webpack', error);
-    gutil.log(stats.toString(config.webpack.stats));
+    gutil.log(stats.toString(conf.stats));
     done();
   });
 });
