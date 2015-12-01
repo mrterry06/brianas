@@ -12,7 +12,7 @@ import thunk from 'redux-thunk';
 import { Root } from 'components/root';
 
 // Modules
-import { reducer } from 'modules/reducers';
+import reducer from 'modules/reducers';
 
 
 const history = createBrowserHistory();
@@ -25,7 +25,7 @@ const store = compose(
 
 if (module.hot) {
   module.hot.accept('./modules/reducers', () => {
-    store.replaceReducer(reducer);
+    store.replaceReducer(require('./modules/reducers'));
   });
 }
 

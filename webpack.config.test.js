@@ -6,7 +6,7 @@ module.exports = {
   devtool: 'inline-source-map',
 
   resolve: {
-    root: path.resolve('src')
+    root: path.resolve('./src')
   },
 
   module: {

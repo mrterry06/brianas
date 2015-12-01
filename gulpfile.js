@@ -6,7 +6,7 @@ var del           = require('del'),
     karma         = require('karma'),
     path          = require('path'),
     webpack       = require('webpack'),
-    WebpackServer = require("webpack-dev-server");
+    WebpackServer = require('webpack-dev-server');
 
 
 //=========================================================

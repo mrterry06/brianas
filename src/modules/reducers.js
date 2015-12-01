@@ -6,7 +6,7 @@ import { projectsReducer } from './projects';
 import { usersReducer } from './users';
 
 
-export const reducer = combineReducers({
+export default combineReducers({
   projects: projectsReducer,
   routing: routeReducer,
   users: usersReducer
