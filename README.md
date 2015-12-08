@@ -4,13 +4,13 @@
 # React Redux Seed
 
 - React `~0.14.3`
-- React-Router `~1.0.0`
+- React-Router `~1.0.1`
 - Redux `~4.0.0`
 - React-Redux
 - Redux-Simple-Router
 - Redux-Thunk
 - ES6
-- Gulp `4.0.0-alpha.1`
+- Gulp `4.0.0-alpha.2`
 - Jasmine
 - Karma
 - SASS
