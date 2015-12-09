@@ -4,9 +4,8 @@ import { IndexRoute, Route, Router } from 'react-router';
 
 // Components
 import { App } from './app/app';
+import Counter from './counter/counter';
 import { Home } from './home/home';
-import { Projects } from './projects/projects';
-import { Users } from './users/users';
 
 
 export class Root extends Component {
@@ -23,8 +22,7 @@ export class Root extends Component {
         <Router history={history}>
           <Route component={App} path="/">
             <IndexRoute component={Home}/>
-            <Route component={Projects} path="/projects"/>
-            <Route component={Users} path="/users"/>
+            <Route component={Counter} path="/counter"/>
           </Route>
         </Router>
       </Provider>
