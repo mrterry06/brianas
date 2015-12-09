@@ -8,15 +8,13 @@ export class App extends Component {
   };
 
   render() {
-    const { children } = this.props;
-
     return (
       <div>
         <header>
-          <Link to="/">Home</Link> | <Link to="/projects">Projects</Link> | <Link to="/users">Users</Link>
+          <Link to="/">Home</Link> | <Link to="/counter">Counter</Link>
         </header>
 
-        <main>{children}</main>
+        <main>{this.props.children}</main>
       </div>
     );
   }

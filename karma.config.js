@@ -1,10 +1,11 @@
-module.exports = function(config) {
+module.exports = (config) => {
   config.set({
     frameworks: [
       'jasmine'
     ],
 
     files: [
+      'node_modules/sinon/pkg/sinon.js',
       'karma.entry.js'
     ],
 
