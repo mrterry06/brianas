@@ -1,6 +1,6 @@
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var path = require('path');
-var webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
 
 
 module.exports = {
@@ -65,15 +65,22 @@ module.exports = {
     })
   ],
 
-  stats: {
-    cached: true,
-    cachedAssets: true,
-    chunks: true,
-    chunkModules: false,
-    colors: true,
-    hash: false,
-    reasons: true,
-    timings: true,
-    version: false
+  devServer: {
+    contentBase: './src',
+    historyApiFallback: true,
+    hot: true,
+    progress: true,
+    publicPath: '/',
+    stats: {
+      cached: true,
+      cachedAssets: true,
+      chunks: true,
+      chunkModules: false,
+      colors: true,
+      hash: false,
+      reasons: true,
+      timings: true,
+      version: false
+    }
   }
 };
