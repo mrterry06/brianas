@@ -1,10 +1,12 @@
 'use strict';
 
+const browserSync   = require('browser-sync');
 const del           = require('del');
 const eslint        = require('gulp-eslint');
 const gulp          = require('gulp');
 const gutil         = require('gulp-util');
 const header        = require('gulp-header');
+const historyApi    = require('connect-history-api-fallback');
 const karma         = require('karma');
 const path          = require('path');
 const webpack       = require('webpack');
@@ -27,6 +29,16 @@ const paths = {
 //  CONFIG
 //---------------------------------------------------------
 const config = {
+  browserSync: {
+    files: [paths.target + '/**'],
+    notify: false,
+    open: false,
+    port: 3000,
+    server: {
+      baseDir: paths.target
+    }
+  },
+
   eslint: {
     src: paths.src.js
   },
@@ -82,6 +94,13 @@ gulp.task('lint', () => {
 
 
 gulp.task('serve', done => {
+  config.browserSync.server.middleware = [historyApi()];
+  browserSync.create()
+    .init(config.browserSync, done);
+});
+
+
+gulp.task('serve.dev', done => {
   let conf = require(config.webpack.dev);
   let compiler = webpack(conf);
   let server = new WebpackServer(compiler, conf.devServer);
@@ -98,7 +117,7 @@ gulp.task('serve', done => {
 //===========================
 //  DEVELOP
 //---------------------------
-gulp.task('default', gulp.task('serve'));
+gulp.task('default', gulp.task('serve.dev'));
 
 
 //===========================
