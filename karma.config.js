@@ -1,8 +1,6 @@
 module.exports = (config) => {
   config.set({
-    frameworks: [
-      'jasmine'
-    ],
+    frameworks: ['jasmine'],
 
     files: [
       'node_modules/sinon/pkg/sinon.js',
@@ -14,7 +12,7 @@ module.exports = (config) => {
     },
 
     // webpack config
-    webpack: require('./webpack.config.test'),
+    webpack: require('./webpack.test'),
 
     // webpack server config
     webpackServer: {
@@ -28,8 +26,6 @@ module.exports = (config) => {
     autoWatch: true,
 
     singleRun: false,
-
-    browserNoActivityTimeout: 180000, // 3 mins
 
     customLaunchers: {
       TRAVIS_CHROME: {

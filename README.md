@@ -18,6 +18,10 @@
 - Webpack Dev Server
 
 
+## Prerequisites
+Node `~5.1`
+
+
 ## Installing dependencies
 ```bash
 $ npm install
