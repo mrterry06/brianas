@@ -9,6 +9,7 @@
 - React-Redux
 - Redux-Simple-Router
 - Redux-Thunk
+- Babel `~6.3`
 - ES6
 - Gulp `4.0.0-alpha.2`
 - Jasmine
