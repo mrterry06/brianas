@@ -59,9 +59,9 @@ module.exports = {
 
   plugins: [
     new ExtractTextPlugin('styles.css'),
-    new OccurenceOrderPlugin(),
     new DedupePlugin(),
     new AggressiveMergingPlugin(),
+    new OccurenceOrderPlugin(),
     new CommonsChunkPlugin('vendor', '[name].js'),
     new HtmlWebpackPlugin({
       filename: 'index.html',

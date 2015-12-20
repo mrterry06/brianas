@@ -4,8 +4,8 @@
 # React Redux Seed
 
 - React `~0.14.3`
-- React-Router `~1.0.1`
-- Redux `~4.0.0`
+- React-Router `~1.0.2`
+- Redux `~3.0.5`
 - React-Redux
 - Redux-Simple-Router
 - Redux-Thunk
@@ -20,7 +20,7 @@
 
 
 ## Prerequisites
-Node `~5.1`
+Node `>=4.2`
 
 
 ## Installing dependencies
