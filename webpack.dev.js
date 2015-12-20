@@ -11,7 +11,7 @@ const OccurenceOrderPlugin = webpack.optimize.OccurenceOrderPlugin;
 module.exports = {
   cache: true,
   debug: true,
-  devtool: 'source-map',
+  devtool: 'cheap-module-eval-source-map',
 
   entry: {
     main: [
@@ -63,7 +63,7 @@ module.exports = {
     new NoErrorsPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      hash: true,
+      hash: false,
       inject: 'body',
       template: './src/index.html'
     })

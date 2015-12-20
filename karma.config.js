@@ -11,10 +11,8 @@ module.exports = (config) => {
       'karma.entry.js': ['webpack', 'sourcemap']
     },
 
-    // webpack config
     webpack: require('./webpack.test'),
 
-    // webpack server config
     webpackServer: {
       noInfo: true
     },
