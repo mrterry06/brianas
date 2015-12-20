@@ -24,24 +24,24 @@ Node `>=4.2`
 
 
 ## Installing dependencies
-```bash
+```shell
 $ npm install
 ```
 
 
 #### Gulp v4 (optional)
-```bash
+```shell
 $ npm install -g gulpjs/gulp-cli#4.0
 ```
 The gulp tasks require gulp v4-alpha. If you don't wish to globally install the v4 gulp-cli, you can run the gulp tasks using the locally installed gulp under `./node_modules/.bin` — for example:
-```bash
+```shell
 $ ./node_modules/.bin/gulp test
 ```
 
 
 ## Gulp Tasks
 #### Developing
-```bash
+```shell
 $ gulp
 ```
 Executing the default `gulp` command will:
@@ -51,7 +51,7 @@ Executing the default `gulp` command will:
 
 
 #### Testing
-```bash
+```shell
 $ gulp test.watch
 ```
 Executing `gulp test.watch` will:
