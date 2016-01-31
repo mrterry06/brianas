@@ -19,13 +19,12 @@ module.exports = {
   entry: {
     main: './src/main.js',
     vendor: [
-      'history',
       'react',
       'react-dom',
       'react-redux',
       'react-router',
+      'react-router-redux',
       'redux',
-      'redux-simple-router',
       'redux-thunk'
     ]
   },

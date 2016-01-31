@@ -1,20 +1,14 @@
 import 'babel-polyfill';
 import 'styles/styles.scss';
 
-import createBrowserHistory from 'history/lib/createBrowserHistory';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { syncReduxAndRouter } from 'redux-simple-router';
+import { browserHistory } from 'react-router';
 
 import { Root } from 'components/root';
 import createStore from './store';
 
 
-const history = createBrowserHistory();
-const store = createStore();
-
-syncReduxAndRouter(history, store);
-
 ReactDOM.render((
-  <Root history={history} store={store}/>
+  <Root history={browserHistory} store={createStore()}/>
 ), document.getElementById('root'));
