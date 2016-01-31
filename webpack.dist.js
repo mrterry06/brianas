@@ -1,3 +1,4 @@
+const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
 
@@ -19,6 +20,7 @@ module.exports = {
   entry: {
     main: './src/main.js',
     vendor: [
+      'babel-polyfill',
       'react',
       'react-dom',
       'react-redux',
@@ -44,11 +46,13 @@ module.exports = {
   module: {
     loaders: [
       {test: /\.js$/, exclude: /node_modules/, loader: 'babel'},
-      {test: /\.scss$/, loader: ExtractTextPlugin.extract(
-        'css!autoprefixer-loader?{browsers:["last 3 versions", "Firefox ESR"]}!sass'
-      )}
+      {test: /\.scss$/, loader: ExtractTextPlugin.extract('css!postcss-loader!sass')}
     ]
   },
+
+  postcss: [
+    autoprefixer({ browsers: ['last 3 versions', 'Firefox ESR'] })
+  ],
 
   sassLoader: {
     outputStyle: 'compressed',
@@ -82,10 +86,10 @@ module.exports = {
     cached: true,
     cachedAssets: true,
     chunks: true,
-    chunkModules: false,
+    chunkModules: true,
     colors: true,
     hash: false,
-    reasons: true,
+    reasons: false,
     timings: true,
     version: false
   }
