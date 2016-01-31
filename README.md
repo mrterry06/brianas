@@ -3,15 +3,15 @@
 
 # React Redux Seed
 
-- React `~0.14.3`
-- React-Router `~1.0.2`
-- Redux `~3.0.5`
+- React
+- React-Router
+- React-Router-Redux
+- Redux
 - React-Redux
-- Redux-Simple-Router
 - Redux-Thunk
-- Babel `~6.3`
+- Babel
 - ES6
-- Gulp `4.0.0-alpha.2`
+- Gulp
 - Jasmine
 - Karma
 - SASS
