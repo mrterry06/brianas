@@ -24,13 +24,13 @@ export class Counter extends Component {
     return (
       <div>
         <h1>Counter</h1>
-        <h2 ref="currentCount">Clicked: {counter} times</h2>
+        <h2 ref={c => this.currentCount = c}>Clicked: {counter} times</h2>
 
         <div>
-          <button onClick={decrement} ref="decrementButton">-</button>
-          <button onClick={increment} ref="incrementButton">+</button>
-          <button onClick={() => incrementAsync()} ref="incrementAsyncButton">Increment async</button>
-          <button onClick={incrementIfOdd} ref="incrementIfOddButton">Increment if odd</button>
+          <button onClick={decrement} ref={c => this.decrementButton = c}>-</button>
+          <button onClick={increment} ref={c => this.incrementButton = c}>+</button>
+          <button onClick={() => incrementAsync()} ref={c => this.incrementAsyncButton = c}>Increment async</button>
+          <button onClick={incrementIfOdd} ref={c => this.incrementIfOddButton = c}>Increment if odd</button>
         </div>
       </div>
     );
