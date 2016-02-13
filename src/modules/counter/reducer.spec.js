@@ -1,3 +1,5 @@
+/* eslint-disable no-undefined */
+
 import { DECREMENT_COUNTER, INCREMENT_COUNTER } from './constants';
 import { counterReducer } from './reducer';
 
