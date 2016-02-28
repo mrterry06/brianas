@@ -20,7 +20,7 @@
 
 
 ## Prerequisites
-Node `>=4.2`
+Node `>=5.2`
 
 
 ## Installing dependencies
