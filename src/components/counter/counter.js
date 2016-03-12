@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import * as counterActions from 'modules/counter/actions';
+import * as counterActions from 'src/core/counter/actions';
 
 
 export class Counter extends Component {

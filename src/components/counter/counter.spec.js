@@ -1,7 +1,7 @@
 import { Simulate } from 'react-addons-test-utils';
-import { createConnectedTestComponent } from 'utils/create-connected-test-component';
-import { createTestComponent } from 'utils/create-test-component';
-import createStore from '../../store';
+import { createConnectedTestComponent } from 'src/utils/create-connected-test-component';
+import { createTestComponent } from 'src/utils/create-test-component';
+import createStore from 'src/store';
 import ConnectedCounter, { Counter } from './counter';
 
 

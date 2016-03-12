@@ -1,5 +1,5 @@
 import thunk from 'redux-thunk';
-import { createMockStore } from 'utils/create-mock-store';
+import { createMockStore } from 'src/utils/create-mock-store';
 
 import {
   DECREMENT_COUNTER,
