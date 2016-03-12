@@ -1,6 +1,5 @@
-const autoprefixer = require('autoprefixer');
-const path = require('path');
 const webpack = require('webpack');
+const config = require('./webpack.base');
 
 // plugins
 const DefinePlugin = webpack.DefinePlugin;
@@ -13,38 +12,19 @@ const OccurenceOrderPlugin = webpack.optimize.OccurenceOrderPlugin;
 module.exports = {
   cache: true,
   debug: true,
-
-  // for faster builds use 'cheap-module-eval-source-map'
-  devtool: 'source-map',
+  devtool: 'source-map', // for faster builds use 'cheap-module-eval-source-map'
+  output: config.output,
+  resolve: config.resolve,
+  postcss: config.postcss,
+  sassLoader: config.sassLoader,
 
   entry: {
     main: [
       'webpack-dev-server/client?http://localhost:3000',
       'webpack/hot/dev-server',
-      './src/main.js'
+      config.entry.main
     ],
-    vendor: [
-      'babel-polyfill',
-      'react',
-      'react-dom',
-      'react-redux',
-      'react-router',
-      'react-router-redux',
-      'redux',
-      'redux-thunk'
-    ]
-  },
-
-  output: {
-    filename: '[name].js',
-    path: path.resolve('./target'),
-    publicPath: '/'
-  },
-
-  resolve: {
-    extensions: ['', '.js'],
-    modulesDirectories: ['node_modules'],
-    root: path.resolve('./src')
+    vendor: config.entry.vendor
   },
 
   module: {
@@ -52,27 +32,15 @@ module.exports = {
       {test: /\.js$/, exclude: /node_modules/, loader: 'babel', query: {
         plugins: [
           ['react-transform', {
-            transforms: [{
-              transform: 'react-transform-hmr',
-              imports: ['react'],
-              locals: ['module']
-            }]
+            transforms: [
+              {transform: 'react-transform-hmr', imports: ['react'], locals: ['module']}
+            ]
           }]
         ]
       }},
 
       {test: /\.scss$/, loader: 'style!css!postcss-loader!sass'}
     ]
-  },
-
-  postcss: [
-    autoprefixer({ browsers: ['last 3 versions', 'Firefox ESR'] })
-  ],
-
-  sassLoader: {
-    outputStyle: 'nested',
-    precision: 10,
-    sourceComments: false
   },
 
   plugins: [
@@ -97,7 +65,7 @@ module.exports = {
     hot: true,
     port: 3000,
     progress: true,
-    publicPath: '/',
+    publicPath: config.output.publicPath,
     stats: {
       cached: true,
       cachedAssets: true,

@@ -1,5 +1,5 @@
-const path = require('path');
 const webpack = require('webpack');
+const config = require('./webpack.base');
 
 // plugins
 const DefinePlugin = webpack.DefinePlugin;
@@ -7,10 +7,7 @@ const DefinePlugin = webpack.DefinePlugin;
 
 module.exports = {
   devtool: 'inline-source-map',
-
-  resolve: {
-    root: path.resolve('./src')
-  },
+  resolve: config.resolve,
 
   module: {
     loaders: [
