@@ -1,3 +1,4 @@
+/* eslint-disable no-multi-spaces, no-process-exit, strict */
 'use strict';
 
 const browserSync   = require('browser-sync');
@@ -87,6 +88,14 @@ gulp.task('js', done => {
 
 gulp.task('lint', () => {
   return gulp.src(config.eslint.src)
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+});
+
+
+gulp.task('lint.tools', () => {
+  return gulp.src('*.js')
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
