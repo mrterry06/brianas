@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import { browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 
-import './styles/styles.scss';
+import { configureStore } from './core/store';
 import { Root } from './components/root';
-import { configureStore } from './store';
+import './styles/styles.scss';
 
 
 const store = configureStore();
