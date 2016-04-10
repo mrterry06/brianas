@@ -1,8 +1,6 @@
-const webpack = require('webpack');
-const config = require('./webpack.base');
-
-// plugins
-const DefinePlugin = webpack.DefinePlugin;
+const webpackBase = require('./webpack.base');
+const config = webpackBase.config;
+const loaders = webpackBase.loaders;
 
 
 module.exports = {
@@ -11,13 +9,7 @@ module.exports = {
 
   module: {
     loaders: [
-      {test: /\.js$/, exclude: /node_modules/, loader: 'babel'}
+      loaders.js
     ]
-  },
-
-  plugins: [
-    new DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('test')
-    })
-  ]
+  }
 };
