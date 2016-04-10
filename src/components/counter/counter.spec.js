@@ -11,11 +11,17 @@ describe('Counter', () => {
 
     beforeEach(() => {
       props = {
-        decrement: sinon.spy(),
-        increment: sinon.spy(),
-        incrementAsync: sinon.spy(),
-        incrementIfOdd: sinon.spy()
+        counter: 0,
+        decrement: () => {},
+        increment: () => {},
+        incrementAsync: () => {},
+        incrementIfOdd: () => {}
       };
+
+      spyOn(props, 'decrement');
+      spyOn(props, 'increment');
+      spyOn(props, 'incrementAsync');
+      spyOn(props, 'incrementIfOdd');
     });
 
 
@@ -30,7 +36,7 @@ describe('Counter', () => {
       it('should invoke `decrement` action', () => {
         const counter = createTestComponent(Counter, props);
         Simulate.click(counter.decrementButton);
-        expect(props.decrement.callCount).toBe(1);
+        expect(props.decrement).toHaveBeenCalledTimes(1);
       });
 
       it('should update count', () => {
@@ -46,7 +52,7 @@ describe('Counter', () => {
       it('should invoke `increment` action', () => {
         const counter = createTestComponent(Counter, props);
         Simulate.click(counter.incrementButton);
-        expect(props.increment.callCount).toBe(1);
+        expect(props.increment).toHaveBeenCalledTimes(1);
       });
 
       it('should update count', () => {
@@ -62,7 +68,7 @@ describe('Counter', () => {
       it('should invoke `incrementAsync` action', () => {
         const counter = createTestComponent(Counter, props);
         Simulate.click(counter.incrementAsyncButton);
-        expect(props.incrementAsync.callCount).toBe(1);
+        expect(props.incrementAsync).toHaveBeenCalledTimes(1);
       });
     });
 
@@ -71,7 +77,7 @@ describe('Counter', () => {
       it('should invoke `incrementIfOdd` action', () => {
         const counter = createTestComponent(Counter, props);
         Simulate.click(counter.incrementIfOddButton);
-        expect(props.incrementIfOdd.callCount).toBe(1);
+        expect(props.incrementIfOdd).toHaveBeenCalledTimes(1);
       });
 
       it('should update count if current count is odd', () => {

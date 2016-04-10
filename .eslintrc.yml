@@ -15,9 +15,6 @@ ecmaFeatures:
   jsx: true
   modules: true
 
-globals:
-  sinon: true
-
 rules:
   array-bracket-spacing: 0
   array-callback-return: 2
