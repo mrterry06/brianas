@@ -27,7 +27,7 @@ rules:
   accessor-pairs: 0
   block-scoped-var: 0
   block-spacing: 2
-  brace-style: [2, stroustrup, {allowSingleLine: true}]
+  brace-style: [2, "stroustrup", {allowSingleLine: true}]
   callback-return: [2, ["cb", "callback", "next"]]
   camelcase: [2, {properties: "always"}]
   comma-dangle: 2
@@ -52,7 +52,7 @@ rules:
   id-blacklist: 0
   id-length: 0
   id-match: 0
-  indent: [2, 2, {SwitchCase: 1}]
+  indent: [2, 2, {SwitchCase: 1, VariableDeclarator: 2}]
   init-declarations: 0
   jsx-quotes: 1
   key-spacing: [2, {beforeColon: false, afterColon: true}]
@@ -156,7 +156,7 @@ rules:
   no-self-assign: 2
   no-self-compare: 0
   no-sequences: 2
-  no-shadow: 1
+  no-shadow: 0
   no-shadow-restricted-names: 2
   no-spaced-func: 2
   no-sparse-arrays: 2
@@ -185,7 +185,7 @@ rules:
   no-warning-comments: 0
   no-whitespace-before-property: 0
   no-with: 2
-  object-curly-spacing: [0, never]
+  object-curly-spacing: [0, "never"]
   object-shorthand: 0
   one-var: 0
   one-var-declaration-per-line: 0
@@ -199,19 +199,19 @@ rules:
   prefer-spread: 0
   prefer-template: 0
   quote-props: 0
-  quotes: [2, single]
+  quotes: [2, "single"]
   react/display-name: 0
   react/forbid-prop-types: [2, {forbid: ["any"]}]
   react/jsx-boolean-value: 1
   react/jsx-closing-bracket-location: 1
   react/jsx-curly-spacing: 1
   react/jsx-equals-spacing: 1
-  react/jsx-handler-names: 1
+  react/jsx-handler-names: 0
   react/jsx-indent: [1, 2]
   react/jsx-indent-props: [1, 2]
   react/jsx-key: 1
   react/jsx-max-props-per-line: 0
-  react/jsx-no-bind: [1, {ignoreRefs: true}]
+  react/jsx-no-bind: [0, {ignoreRefs: true}]
   react/jsx-no-duplicate-props: 1
   react/jsx-no-literals: 0
   react/jsx-no-undef: 1
@@ -251,7 +251,7 @@ rules:
   space-infix-ops: 2
   space-unary-ops: [2, {words: true, nonwords: false}]
   spaced-comment: [2, "always", {exceptions: ["-", "="]}]
-  strict: [2, "global"]
+  strict: [0, "global"]
   template-curly-spacing: 0
   use-isnan: 2
   valid-jsdoc: [2, {prefer: {return: "returns"}}]
