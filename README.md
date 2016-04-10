@@ -11,7 +11,6 @@
 - Redux-Thunk
 - Babel
 - ES6
-- Gulp
 - Jasmine
 - Karma
 - SASS
@@ -19,44 +18,27 @@
 - Webpack Dev Server
 
 
-## Prerequisites
-Node `>=5.2`
+Getting Started
+---------------
 
+#### Prerequisites
+Node `>=5.10`
 
-## Installing dependencies
+#### Installing dependencies
 ```shell
 $ npm install
 ```
 
 
-#### Gulp v4 (optional)
-```shell
-$ npm install -g gulpjs/gulp-cli#4.0
-```
-The gulp tasks require gulp v4-alpha. If you don't wish to globally install the v4 gulp-cli, you can run the gulp tasks using the locally installed gulp under `./node_modules/.bin` — for example:
-```shell
-$ ./node_modules/.bin/gulp test
-```
+Usage
+-----
 
-
-## Gulp Tasks
-#### Developing
-```shell
-$ gulp
-```
-Executing the default `gulp` command will:
-- Build the project
-- Start the Webpack dev server at <a href="http://localhost:3000" target="_blank">localhost:3000</a>
-- Watch for changes to the source files and process changes
-
-
-#### Testing
-```shell
-$ gulp test.watch
-```
-Executing `gulp test.watch` will:
-- Run the test suites
-- Watch for changes to the source files
-- Re-run the tests whenever the sources are modified
-
-For a single test run without auto-watch, execute `gulp test` instead.
+|Script|Description|
+|---|---|
+|`npm start`|Start the Webpack DevServer at `localhost:3000`|
+|`npm run build`|Lint, test, and build the application to `./target`|
+|`npm run dev`|Same as `npm start`|
+|`npm run lint`|Lint the application using eslint|
+|`npm test`|Run unit tests with Karma and Jasmine|
+|`npm run test:watch`|Run unit tests with Karma and Jasmine; watch for changes to re-run tests|
+|`npm version`|Bump package.json version, generate CHANGELOG.md, git commit and tag (see [npm version](https://docs.npmjs.com/cli/version))|

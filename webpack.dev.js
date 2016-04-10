@@ -1,81 +1,42 @@
 const webpack = require('webpack');
-const config = require('./webpack.base');
-
-// plugins
-const DefinePlugin = webpack.DefinePlugin;
-const HotModuleReplacementPlugin = webpack.HotModuleReplacementPlugin;
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const NoErrorsPlugin = webpack.NoErrorsPlugin;
-const OccurenceOrderPlugin = webpack.optimize.OccurenceOrderPlugin;
+const webpackBase = require('./webpack.base');
+const config = webpackBase.config;
+const loaders = webpackBase.loaders;
 
 
-module.exports = {
-  cache: true,
-  debug: true,
-  devtool: 'source-map', // for faster builds use 'cheap-module-eval-source-map'
-  output: config.output,
-  resolve: config.resolve,
-  postcss: config.postcss,
-  sassLoader: config.sassLoader,
+module.exports = config;
 
-  entry: {
-    main: [
-      'webpack-dev-server/client?http://localhost:3000',
-      'webpack/hot/dev-server',
-      config.entry.main
-    ],
-    vendor: config.entry.vendor
-  },
+config.entry.main.unshift(
+  'webpack-dev-server/client?http://localhost:3000',
+  'webpack/hot/dev-server'
+);
 
-  module: {
-    loaders: [
-      {test: /\.js$/, exclude: /node_modules/, loader: 'babel', query: {
-        plugins: [
-          ['react-transform', {
-            transforms: [
-              {transform: 'react-transform-hmr', imports: ['react'], locals: ['module']}
-            ]
-          }]
-        ]
-      }},
+config.module = {
+  loaders: [
+    loaders.jsHmr,
+    loaders.scss
+  ]
+};
 
-      {test: /\.scss$/, loader: 'style!css!postcss-loader!sass'}
-    ]
-  },
+config.plugins.push(
+  new webpack.HotModuleReplacementPlugin()
+);
 
-  plugins: [
-    new DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development')
-    }),
-    new OccurenceOrderPlugin(),
-    new HotModuleReplacementPlugin(),
-    new NoErrorsPlugin(),
-    new HtmlWebpackPlugin({
-      chunksSortMode: 'none',
-      filename: 'index.html',
-      hash: false,
-      inject: 'body',
-      template: './src/index.html'
-    })
-  ],
-
-  devServer: {
-    contentBase: './src',
-    historyApiFallback: true,
-    hot: true,
-    port: 3000,
-    progress: true,
-    publicPath: config.output.publicPath,
-    stats: {
-      cached: true,
-      cachedAssets: true,
-      chunks: true,
-      chunkModules: false,
-      colors: true,
-      hash: false,
-      reasons: true,
-      timings: true,
-      version: false
-    }
+config.devServer = {
+  contentBase: './src',
+  historyApiFallback: true,
+  hot: true,
+  port: 3000,
+  publicPath: config.output.publicPath,
+  stats: {
+    cached: true,
+    cachedAssets: true,
+    chunks: true,
+    chunkModules: false,
+    colors: true,
+    hash: false,
+    reasons: true,
+    timings: true,
+    version: false
   }
 };
