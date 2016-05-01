@@ -13,8 +13,8 @@ export function Root({history, store}) {
     <Provider store={store}>
       <Router history={history}>
         <Route component={App} path="/">
-          <IndexRoute component={Home}/>
-          <Route component={Counter} path="/counter"/>
+          <IndexRoute component={Home} />
+          <Route component={Counter} path="/counter" />
         </Route>
       </Router>
     </Provider>

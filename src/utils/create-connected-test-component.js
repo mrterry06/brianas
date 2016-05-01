@@ -10,7 +10,7 @@ import {
 export function createConnectedTestComponent(ConnectedTestComponent, TestComponent, store, props) {
   const renderedComponent = renderIntoDocument(
     <Provider store={store}>
-      <ConnectedTestComponent {...props}/>
+      <ConnectedTestComponent {...props} />
     </Provider>
   );
 

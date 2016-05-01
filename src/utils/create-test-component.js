@@ -8,7 +8,7 @@ import {
 
 export function createTestComponent(TestComponent, props) {
   return findRenderedComponentWithType(
-    renderIntoDocument(<TestComponent {...props}/>),
+    renderIntoDocument(<TestComponent {...props} />),
     TestComponent
   );
 }
