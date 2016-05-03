@@ -1,38 +1,28 @@
-import { browserHistory } from 'react-router';
 import { routerMiddleware } from 'react-router-redux';
 import { applyMiddleware, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import reducer from './reducer';
+import { browserHistory } from './history';
+import rootReducer from './reducers';
 
 
 export function configureStore(initialState = {}) {
-  const middleware = applyMiddleware(
+  let middleware = applyMiddleware(
     routerMiddleware(browserHistory),
     thunk
   );
 
-  let finalCreateStore;
-
   if (process.env.NODE_ENV !== 'production') {
-    // configure redex-devtools-extension for Chrome
-    const devToolsConfig = {
-      actionsBlacklist: []
-    };
-
-    finalCreateStore = compose(
-      middleware,
-      window.devToolsExtension ? window.devToolsExtension(devToolsConfig) : f => f
-    )(createStore);
-  }
-  else {
-    finalCreateStore = middleware(createStore);
+    const devToolsExtension = window.devToolsExtension;
+    if (typeof devToolsExtension === 'function') {
+      middleware = compose(middleware, devToolsExtension());
+    }
   }
 
-  const store = finalCreateStore(reducer, initialState);
+  const store = createStore(rootReducer, initialState, middleware);
 
   if (module.hot) {
-    module.hot.accept('./reducer', () => {
-      store.replaceReducer(require('./reducer').default);
+    module.hot.accept('./reducers', () => {
+      store.replaceReducer(require('./reducers').default);
     });
   }
 
