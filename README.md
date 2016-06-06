@@ -3,19 +3,20 @@
 
 # React Redux Seed
 
-- React
-- React-Router
-- React-Router-Redux
-- Redux
-- React-Redux
-- Redux-Thunk
-- Babel
-- ES6
-- Jasmine
-- Karma
-- SASS
-- Webpack
-- Webpack Dev Server
+- react
+- react-hot-loader `3.0.0-beta.2`
+- react-redux
+- react-router
+- react-router-redux
+- redux
+- redux-thunk
+- babel
+- eS6
+- jasmine
+- karma
+- sass
+- webpack
+- webpack-dev-server
 
 
 Getting Started
