@@ -1,22 +1,13 @@
 import React, { PropTypes } from 'react';
 import { Provider } from 'react-redux';
-import { IndexRoute, Route, Router } from 'react-router';
-
-// components
-import { App } from './app/app';
-import Counter from './counter/counter';
-import { Home } from './home/home';
+import { Router } from 'react-router';
+import { routes } from './routes';
 
 
-export function Root({history, store}) {
+export default function Root({history, store}) {
   return (
     <Provider store={store}>
-      <Router history={history}>
-        <Route component={App} path="/">
-          <IndexRoute component={Home} />
-          <Route component={Counter} path="/counter" />
-        </Route>
-      </Router>
+      <Router history={history} routes={routes} />
     </Provider>
   );
 }
