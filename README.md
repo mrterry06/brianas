@@ -23,7 +23,7 @@ Getting Started
 ---------------
 
 #### Prerequisites
-Node `>=5.10`
+Node `>=5.11`
 
 #### Installing dependencies
 ```shell
