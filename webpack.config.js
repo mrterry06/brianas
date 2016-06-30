@@ -24,6 +24,7 @@ const PORT = process.env.PORT || 3000;
 //---------------------------------------------------------
 const loaders = {
   js: {test: /\.js$/, exclude: /node_modules/, loader: 'babel'},
+  json: {test: /\.json$/, loader: 'json'},
   scss: {test: /\.scss$/, loader: 'style!css!postcss!sass'}
 };
 
@@ -36,7 +37,7 @@ module.exports = config;
 
 
 config.resolve = {
-  extensions: ['', '.ts', '.js'],
+  extensions: ['', '.js', '.json'],
   modulesDirectories: ['node_modules'],
   root: path.resolve('.')
 };
@@ -63,9 +64,8 @@ config.sassLoader = {
 //-------------------------------------
 if (ENV_DEVELOPMENT || ENV_PRODUCTION) {
   config.entry = {
-    main: [
-      './src/main'
-    ]
+    main: ['./src/main.js'],
+    vendor: './src/vendor.js'
   };
 
   config.output = {
@@ -75,7 +75,12 @@ if (ENV_DEVELOPMENT || ENV_PRODUCTION) {
   };
 
   config.plugins.push(
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: Infinity
+    }),
     new HtmlWebpackPlugin({
+      chunkSortMode: 'dependency',
       filename: 'index.html',
       hash: false,
       inject: 'body',
@@ -136,21 +141,6 @@ if (ENV_DEVELOPMENT) {
 if (ENV_PRODUCTION) {
   config.devtool = 'source-map';
 
-  config.entry.vendor = [
-    'babel-polyfill',
-    'react',
-    'react-dom',
-    'react-hot-loader',
-    'react-redux',
-    'react-router',
-    'react-router-redux',
-    'redux',
-    'redux-thunk',
-    'reselect',
-    'immutable',
-    'isomorphic-fetch'
-  ];
-
   config.output.filename = '[name].[chunkhash].js';
 
   config.module = {
@@ -162,11 +152,7 @@ if (ENV_PRODUCTION) {
 
   config.plugins.push(
     new WebpackMd5Hash(),
-    new ExtractTextPlugin('styles.css'),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: Infinity
-    }),
+    new ExtractTextPlugin('styles.[contenthash].css'),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       mangle: true,
@@ -190,7 +176,15 @@ if (ENV_TEST) {
   config.module = {
     loaders: [
       loaders.js,
+      loaders.json,
       loaders.scss
     ]
+  };
+
+  config.externals = {
+    'jsdom': 'window',
+    'react/addons': true,
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true
   };
 }
