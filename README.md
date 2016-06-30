@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/r-park/react-redux-seed.svg?branch=master)](https://travis-ci.org/r-park/react-redux-seed)
+[![CircleCI](https://circleci.com/gh/r-park/react-redux-seed.svg?style=shield&circle-token=4f1796f8ed635f0274bb5a0d10d065cc97e1756c)](https://circleci.com/gh/r-park/react-redux-seed)
 
 
 # React Redux Seed
