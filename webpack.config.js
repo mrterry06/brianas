@@ -64,8 +64,7 @@ config.sassLoader = {
 //-------------------------------------
 if (ENV_DEVELOPMENT || ENV_PRODUCTION) {
   config.entry = {
-    main: ['./src/main.js'],
-    vendor: './src/vendor.js'
+    main: ['./src/main.js']
   };
 
   config.output = {
@@ -75,10 +74,6 @@ if (ENV_DEVELOPMENT || ENV_PRODUCTION) {
   };
 
   config.plugins.push(
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: Infinity
-    }),
     new HtmlWebpackPlugin({
       chunkSortMode: 'dependency',
       filename: 'index.html',
@@ -141,6 +136,8 @@ if (ENV_DEVELOPMENT) {
 if (ENV_PRODUCTION) {
   config.devtool = 'source-map';
 
+  config.entry.vendor = './src/vendor.js';
+
   config.output.filename = '[name].[chunkhash].js';
 
   config.module = {
@@ -153,6 +150,10 @@ if (ENV_PRODUCTION) {
   config.plugins.push(
     new WebpackMd5Hash(),
     new ExtractTextPlugin('styles.[contenthash].css'),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: Infinity
+    }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       mangle: true,
