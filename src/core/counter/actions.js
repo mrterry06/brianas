@@ -1,34 +1,23 @@
-import {
-  DECREMENT_COUNTER,
-  INCREMENT_COUNTER
-} from './constants';
+export const counterActions = {
+  DECREMENT: 'DECREMENT',
+  INCREMENT: 'INCREMENT',
+  INCREMENT_ASYNC: 'INCREMENT_ASYNC',
+  INCREMENT_IF_ODD: 'INCREMENT_IF_ODD',
 
 
-export function decrement() {
-  return {
-    type: DECREMENT_COUNTER
-  };
-}
+  decrement: () => ({
+    type: counterActions.DECREMENT
+  }),
 
-export function increment() {
-  return {
-    type: INCREMENT_COUNTER
-  };
-}
+  increment: () => ({
+    type: counterActions.INCREMENT
+  }),
 
-export function incrementAsync(delay = 1000) {
-  return dispatch => {
-    setTimeout(() => {
-      dispatch(increment());
-    }, delay);
-  };
-}
+  incrementAsync: () => ({
+    type: counterActions.INCREMENT_ASYNC
+  }),
 
-export function incrementIfOdd() {
-  return (dispatch, getState) => {
-    const { counter } = getState();
-    if (counter % 2 !== 0) {
-      dispatch(increment());
-    }
-  };
-}
+  incrementIfOdd: () => ({
+    type: counterActions.INCREMENT_IF_ODD
+  })
+};

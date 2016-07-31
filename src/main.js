@@ -9,9 +9,9 @@ import { configureStore } from './core/store';
 import Root from './components/root';
 
 
+const rootElement = document.getElementById('root');
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
-const rootElement = document.getElementById('root');
 
 
 function render(Root) {
