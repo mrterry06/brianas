@@ -1,3 +1,4 @@
+const argv = require('yargs').argv;
 const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -75,7 +76,6 @@ if (ENV_DEVELOPMENT || ENV_PRODUCTION) {
 
   config.plugins.push(
     new HtmlWebpackPlugin({
-      chunkSortMode: 'dependency',
       filename: 'index.html',
       hash: false,
       inject: 'body',
@@ -92,6 +92,7 @@ if (ENV_DEVELOPMENT) {
   config.devtool = 'cheap-module-source-map';
 
   config.entry.main.unshift(
+    'babel-polyfill',
     `webpack-dev-server/client?http://${HOST}:${PORT}`,
     'webpack/hot/only-dev-server',
     'react-hot-loader/patch'
@@ -181,6 +182,20 @@ if (ENV_TEST) {
       loaders.scss
     ]
   };
+
+  if (argv.coverage) {
+    config.module.preLoaders = [
+      {
+        test: /\.js$/,
+        loader: 'isparta',
+        include: path.resolve('./src'),
+        exclude: [
+          /\.spec\.js$/,
+          /node_modules/
+        ]
+      }
+    ];
+  }
 
   config.externals = {
     'jsdom': 'window',

@@ -1,8 +1,8 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Link } from 'react-router';
 
 
-export function App({children}) {
+function App({children}) {
   return (
     <div>
       <header>
@@ -15,5 +15,7 @@ export function App({children}) {
 }
 
 App.propTypes = {
-  children: PropTypes.element
+  children: React.PropTypes.element
 };
+
+export default App;

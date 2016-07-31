@@ -1,5 +1,7 @@
+const argv = require('yargs').argv;
+
 module.exports = config => {
-  config.set({
+  const options = {
     frameworks: ['jasmine'],
 
     files: [
@@ -16,7 +18,7 @@ module.exports = config => {
       noInfo: true
     },
 
-    reporters: ['dots'],
+    reporters: ['mocha'],
 
     logLevel: config.LOG_INFO,
 
@@ -25,5 +27,18 @@ module.exports = config => {
     singleRun: false,
 
     browsers: ['Chrome']
-  });
+  };
+
+  if (argv.coverage) {
+    options.reporters.push('coverage');
+    options.coverageReporter = {
+      dir: 'coverage',
+      subdir: '.',
+      reporters: [
+        {type: 'lcov'}
+      ]
+    };
+  }
+
+  config.set(options);
 };

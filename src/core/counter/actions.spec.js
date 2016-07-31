@@ -1,53 +1,37 @@
-import thunk from 'redux-thunk';
-import { createMockStore } from 'src/utils/create-mock-store';
-
-import {
-  DECREMENT_COUNTER,
-  INCREMENT_COUNTER
-} from './constants';
-
-import {
-  decrement,
-  increment,
-  incrementAsync,
-  incrementIfOdd
-} from './actions';
+import { counterActions } from './actions';
 
 
-describe('Counter', () => {
-  describe('action creators', () => {
-    describe('`decrement` action creator', () => {
-      it('should create decrement action', () => {
-        expect(decrement()).toEqual({type: DECREMENT_COUNTER});
+describe('counter', () => {
+  describe('countActions', () => {
+    describe('decrementCounter()', () => {
+      it('should create an action', () => {
+        expect(counterActions.decrement()).toEqual({
+          type: counterActions.DECREMENT
+        });
       });
     });
 
-    describe('`increment` action creator', () => {
-      it('should create increment action', () => {
-        expect(increment()).toEqual({type: INCREMENT_COUNTER});
+    describe('incrementCounter()', () => {
+      it('should create an action', () => {
+        expect(counterActions.increment()).toEqual({
+          type: counterActions.INCREMENT
+        });
       });
     });
 
-    describe('`incrementAsync` action creator', () => {
-      it('should create increment action', done => {
-        const expectedActions = [{type: INCREMENT_COUNTER}];
-        const store = createMockStore({counter: 0}, expectedActions, [thunk], done);
-        store.dispatch(incrementAsync(100));
+    describe('incrementAsync()', () => {
+      it('should create an action', () => {
+        expect(counterActions.incrementAsync()).toEqual({
+          type: counterActions.INCREMENT_ASYNC
+        });
       });
     });
 
-    describe('`incrementIfOdd` action creator', () => {
-      it('should create increment action if count is odd', done => {
-        const expectedActions = [{type: INCREMENT_COUNTER}];
-        const store = createMockStore({counter: 1}, expectedActions, [thunk], done);
-        store.dispatch(incrementIfOdd());
-      });
-
-      it('should not create increment action if count is even', done => {
-        const expectedActions = [];
-        const store = createMockStore({counter: 2}, expectedActions, [thunk]);
-        store.dispatch(incrementIfOdd());
-        done();
+    describe('incrementCounterIfOdd()', () => {
+      it('should create an action', () => {
+        expect(counterActions.incrementIfOdd()).toEqual({
+          type: counterActions.INCREMENT_IF_ODD
+        });
       });
     });
   });
