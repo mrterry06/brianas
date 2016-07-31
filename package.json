@@ -22,6 +22,7 @@
     "clean": "run-s clean:coverage clean:target",
     "clean:coverage": "del-cli ./coverage",
     "clean:target": "del-cli ./target",
+    "heroku-postbuild": "npm run build",
     "lint": "eslint -c .eslintrc.yml *.js ./src ./server",
     "prebuild": "npm run clean:target",
     "pretest": "run-s clean:coverage lint",
@@ -31,6 +32,13 @@
     "test": "cross-env NODE_ENV=test karma start --single-run --coverage",
     "test:watch": "cross-env NODE_ENV=test karma start --reporters dots",
     "version": "npm run changelog && git add CHANGELOG.md"
+  },
+  "dependencies": {
+    "compression": "~1.6.2",
+    "express": "~4.14.0",
+    "helmet": "~2.1.1",
+    "serve-favicon": "~2.3.0",
+    "winston": "~2.2.0"
   },
   "devDependencies": {
     "autoprefixer": "~6.3.7",
@@ -51,7 +59,6 @@
     "enzyme": "~2.4.1",
     "eslint": "3.2.0",
     "eslint-plugin-react": "~5.2.2",
-    "express": "~4.14.0",
     "extract-text-webpack-plugin": "~1.0.1",
     "html-webpack-plugin": "~2.22.0",
     "immutable": "~3.8.1",
@@ -86,7 +93,6 @@
     "webpack": "~1.13.1",
     "webpack-dev-server": "~1.14.1",
     "webpack-md5-hash": "~0.0.5",
-    "winston": "~2.2.0",
     "yargs": "~4.8.1"
   }
 }
