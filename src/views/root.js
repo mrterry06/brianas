@@ -1,18 +1,25 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Provider } from 'react-redux';
-import { Router } from 'react-router';
+import { applyRouterMiddleware, Router } from 'react-router';
+import useScroll from 'react-router-scroll';
 import { routes } from './routes';
 
 
-export default function Root({history, store}) {
+function Root({history, store}) {
   return (
     <Provider store={store}>
-      <Router history={history} routes={routes} />
+      <Router
+        history={history}
+        routes={routes}
+        render={applyRouterMiddleware(useScroll())}
+      />
     </Provider>
   );
 }
 
 Root.propTypes = {
-  history: PropTypes.object.isRequired,
-  store: PropTypes.object.isRequired
+  history: React.PropTypes.object.isRequired,
+  store: React.PropTypes.object.isRequired
 };
+
+export default Root;
