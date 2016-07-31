@@ -2,18 +2,22 @@
   "presets": [
     "es2015",
     "react",
-    "stage-0"
+    "stage-1"
   ],
 
   "plugins": [
-    "react-hot-loader/babel"
+    "transform-function-bind"
   ],
 
   "env": {
-    "production": {
+    "development": {
       "plugins": [
-        "transform-react-constant-elements",
-        "transform-react-inline-elements"
+        "react-hot-loader/babel"
+      ]
+    },
+    "production": {
+      "presets": [
+        "react-optimize"
       ]
     }
   }

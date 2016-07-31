@@ -92,6 +92,7 @@ if (ENV_DEVELOPMENT) {
   config.devtool = 'cheap-module-source-map';
 
   config.entry.main.unshift(
+    'babel-polyfill',
     `webpack-dev-server/client?http://${HOST}:${PORT}`,
     'webpack/hot/only-dev-server',
     'react-hot-loader/patch'
