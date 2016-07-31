@@ -13,7 +13,7 @@ import 'redux-saga';
 import 'redux-saga/effects';
 
 //
-// import 'classnames';
+import 'classnames';
 // import 'immutable';
 // import 'reselect';
 // import 'superagent';
