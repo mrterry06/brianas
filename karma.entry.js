@@ -1,5 +1,3 @@
-require('babel-polyfill');
-
 var exclude = [
   './main.js',
   './vendor.js'
