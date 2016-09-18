@@ -22,11 +22,10 @@
     "clean": "run-s clean:coverage clean:target",
     "clean:coverage": "del-cli ./coverage",
     "clean:target": "del-cli ./target",
-    "heroku-postbuild": "npm run build",
     "lint": "eslint -c .eslintrc.yml *.js ./src ./server",
     "prebuild": "npm run clean:target",
     "pretest": "run-s clean:coverage lint",
-    "server": "cross-env NODE_ENV=development nodemon -w 'server/**/*.*' ./server/main.js",
+    "server": "cross-env NODE_ENV=development nodemon -w 'server/**/*.*' server/main.js",
     "server:dev": "cross-env NODE_ENV=development webpack-dev-server --progress",
     "start": "npm run server:dev",
     "test": "cross-env NODE_ENV=test karma start --single-run --coverage",
@@ -36,8 +35,6 @@
   "dependencies": {
     "compression": "~1.6.2",
     "express": "~4.14.0",
-    "helmet": "~2.1.1",
-    "serve-favicon": "~2.3.0",
     "winston": "~2.2.0"
   },
   "devDependencies": {
