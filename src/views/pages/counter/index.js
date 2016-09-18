@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { counterActions } from 'src/core/counter';
-import Counter from '../../components/counter';
+import { counterActions } from 'core/counter';
+import Counter from 'views/components/counter';
 
 
 function CounterPage(props) {
