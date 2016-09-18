@@ -23,6 +23,11 @@
       "presets": [
         "react-optimize"
       ]
+    },
+    "test": {
+      "plugins": [
+        ["istanbul", {"exclude": ["**/*.spec.js"]}]
+      ]
     }
   }
 }
