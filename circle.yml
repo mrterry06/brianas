@@ -1,6 +1,6 @@
 machine:
   node:
-    version: 6.1
+    version: 6.4
 
 dependencies:
   pre:
@@ -8,4 +8,5 @@ dependencies:
 
 test:
   post:
+    - npm run build
     - mv ./coverage ${CIRCLE_ARTIFACTS}
