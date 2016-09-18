@@ -3,44 +3,45 @@
 
 # React Redux Seed
 
-- react
-- react-hot-loader `3.0.0-beta.2`
-- react-redux
-- react-router
-- react-router-redux
-- redux
-- redux-thunk
-- babel
-- eS6
-- jasmine
-- karma
-- sass
-- webpack
-- webpack-dev-server
+
+Stack
+-----
+
+- React
+- React Hot Loader `3.0.0-beta.4`
+- React Redux
+- React Router
+- React Router Redux
+- Redux
+- Redux Saga
+- Babel
+- ES6
+- Jasmine
+- Karma
+- Sass
+- Webpack `2.1.0-beta.22`
+- Webpack Dev Server `2.1.0-beta.4`
 
 
-Getting Started
----------------
+Quick Start
+-----------
 
-#### Prerequisites
-Node `>=5.11`
-
-#### Installing dependencies
 ```shell
+$ git clone https://github.com/r-park/redux-redux-seed.git
+$ cd redux-redux-seed
 $ npm install
+$ npm start
 ```
 
 
-Usage
------
+NPM Commands
+------------
 
-|Script|Description|
+|Command|Description|
 |---|---|
-|`npm start`|Start webpack development server @ `localhost:3000`|
-|`npm run build`|Lint, test, and build the application to `./target`|
-|`npm run dev`|Same as `npm start`|
-|`npm run lint`|Lint the application using eslint|
-|`npm run server`|Start express server @ `localhost:3000` to serve built artifacts from `./target` (must run `npm run build` first)|
-|`npm test`|Run unit tests with Karma and Jasmine|
-|`npm run test:watch`|Run unit tests with Karma and Jasmine; watch for changes to re-run tests|
-|`npm version`|Bump package.json version, generate CHANGELOG.md, git commit and tag (see [npm version](https://docs.npmjs.com/cli/version))|
+|npm start|Start webpack development server @ **localhost:3000**|
+|npm run build|Build production bundles to **./target** directory|
+|npm run lint|Lint the application using eslint|
+|npm run server|Start express server @ **localhost:3000** to serve built artifacts from **./target** directory|
+|npm test|Run tests and generate coverage report to **./coverage** directory|
+|npm run test:watch|Run tests; watch for changes and re-run tests|

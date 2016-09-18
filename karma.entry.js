@@ -1,8 +1,5 @@
-require('babel-polyfill');
-
 var exclude = [
-  './main.js',
-  './vendor.js'
+  './main.js'
 ];
 
 var context = require.context('./src', true, /\.js$/);
